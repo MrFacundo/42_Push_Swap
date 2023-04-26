@@ -4,11 +4,8 @@ OBJECTS 		= $(SOURCES:.c=.o)
 HEADER			= -Iincludes
 LIBFT_DIR		= ./libft
 CC 				= gcc
-CFLAGS_PROD 	= -g
-LFLAGS		 	= -L$(LIBFT_DIR)
-
-
-# CFLAGS_PROD 	= -g -Wall -Wextra -Werror
+CFLAGS_PROD 	= -g -Wall -Wextra -Werror
+LFLAGS		 	= -L$(LIBFT_DIR) -lft
 
 # --- COLORS ---
 
@@ -27,7 +24,7 @@ $(NAME): $(OBJECTS) libft
 		@echo "$(GREEN)$(NAME) Compiled! ᕦ(♥_♥)ᕤ$(NONE)\n"
 
 .c.o:	%.o : %.c
-		$(CC) $(CFLAGS_PROD) -c $< -o $@
+		$(CC) -c $< -o $@
 
 libft:
 		@echo  "$(GRAY)----Compiling Libft----$(NONE)"
@@ -42,7 +39,6 @@ fclean:	clean
 		@echo "$(RED)Deleting everything! ( ͡° ͜ʖ ͡°) $(NONE)"
 		rm -f $(NAME) $(OBJECTS) libft/libft.a
 
-
 show:
 		@printf "NAME	: $(NAME)\n"
 		@printf "CC	: $(CC)\n"
@@ -53,7 +49,9 @@ show:
 valgrind: all
 		 valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all -s ./so_long maps/map_4.ber
 
+rs:		 all
+		./push_swap 3 2 1
 
 re: fclean all
 
-.PHONY: all libft clean fclean re valgrind show
+.PHONY: all libft clean fclean re show valgrind

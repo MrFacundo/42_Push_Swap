@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/04/25 21:49:05 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:20:46 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <stdarg.h>
 
 /* push_swap.c */
-int	main();
+int			main(int argc, char **argv);
 
 #endif
