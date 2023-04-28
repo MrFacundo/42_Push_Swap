@@ -1,55 +1,64 @@
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-
 void	print_int(void *content)
 {
 	int value = *(int *)content;
-	printf("%d\n", *(int *)content);
+ 	printf("%d\n", *(int *)content);
 }
 
-// Take the first element at the top of b and put it at the top of a. 
-// Do nothing if b is empty
-void	pa(t_list **a, t_list **b)
+t_stack_node	*get_last_node(t_stack_node *head)
 {
-
-	t_list *b_last;
-	t_list *b_last_alloc;
-
-
-	b_last = ft_lstlast(*b);
-	printf("b_last->content: %d\n", *(int *)b_last->content);
-	b_last_alloc = ft_lstnew(b_last->content);
-	ft_lstadd_back(a, b_last_alloc);
-	ft_lstdelone(b_last, free);
+	if (!head)
+		return 0;
+	while (head->next)
+		head = head->next;
+	return (head);
 }
 
-
-int	main(int argc, char *argv[])
+void	append_node(t_stack_node **stack, int nbr)
 {
-	int i;
-	t_list *a = 0;
-	t_list *b = 0;
-	int *content;
-	i = 1;
+	t_stack_node	*new_node;
+	t_stack_node	*last_node;
 
-	while (i < argc)
+	if (!stack)
+		return ;
+	new_node = malloc(sizeof(t_stack_node));
+	if (!new_node)
+		return ;
+	new_node->next = 0;
+	new_node->value = nbr;
+	if (!*stack)
 	{
-		content = malloc(sizeof(int));
-		*content = ft_atoi(argv[i]);
-		ft_lstadd_back(&a, ft_lstnew(content));
-		ft_lstadd_back(&b, ft_lstnew(content));
+		*stack = new_node;
+		new_node->prev = 0;
+	}
+	else
+	{
+		last_node = get_last_node(stack);
+		last_node->next = new_node;
+		new_node->prev = last_node;
+	}
+}
+
+void	stack_init(t_stack_node **stack, char **argv)
+{
+	int nbr;
+	int	i;
+
+	while(argv[i])
+	{
+		nbr = ft_atoi(argv[i]);
+		append_node(stack, nbr);
 		i++;
 	}
-	printf("the items in list a:\n");
-	ft_lstiter(a, print_int);
-	printf("the items in list b:\n");
-	ft_lstiter(b, print_int);
-	pa(&a, &b);
-	printf("the items in list a:\n");
-	ft_lstiter(a, print_int);
-	printf("the items in list b:\n");
-	ft_lstiter(b, print_int);
-	
+}
+
+int	main()
+{
+	t_stack_node	*a;
+	char	*values[5] = {values[0] = "\0", values[1] = "100", values[2] = "200", values[3] = "50", values[4] = "150"};
+	a = 0;
+	stack_init(&a, values + 1);
 	return (0);
 }
