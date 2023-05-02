@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/04/28 16:36:43 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/02 14:04:09 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ typedef struct s_stack_node
 }				t_stack_node;
 
 /* push_swap.c */
-int			main(int argc, char **argv);
+int			main();
 
 #endif
