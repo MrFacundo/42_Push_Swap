@@ -10,6 +10,37 @@ t_stack_node	*get_last_node(t_stack_node *head)
 	return (head);
 }
 
+static	void push(t_stack_node **dst, t_stack_node **src)
+{
+	t_stack_node	*last_node_one;
+	t_stack_node	*last_node_two;
+
+	if (!*src)
+		return ;
+	last_node_one = get_last_node(*dst);
+	last_node_two = get_last_node(*src);
+	last_node_one->next = last_node_two;
+	last_node_two->prev->next = 0;
+	last_node_two->prev = last_node_one;
+	last_node_two->next = 0;
+	printf("push\n");
+}
+
+static	void swap(t_stack_node **stack)
+{
+	t_stack_node	*last_node;
+	if (NULL == stack || NULL == *stack)
+		return ;
+	last_node = get_last_node(*stack);
+	last_node->prev = last_node->prev->prev;
+	last_node->next = last_node->prev->next;
+	last_node->prev->next = last_node;
+	last_node->next->prev = last_node;
+	last_node->next->next = 0;
+	printf("swap\n");
+}
+
+
 static	void rotate(t_stack_node **stack)
 {
 	t_stack_node	*last_node;
@@ -22,7 +53,7 @@ static	void rotate(t_stack_node **stack)
 	*stack = (*stack)->next;
 	(*stack)->prev = 0;
 	last_node->next->next= 0;
-
+	printf("rotate\n");
 }
 
 static void	r_rotate(t_stack_node **stack)
@@ -37,6 +68,7 @@ static void	r_rotate(t_stack_node **stack)
 	*stack = last_node;
 	last_node->prev->next = 0;
 	last_node->prev = NULL;
+	printf("r_rotate\n"); 
 }
 
 void	append_node(t_stack_node **stack, int nbr)
@@ -101,19 +133,23 @@ void	print_node(t_stack_node *stack)
 int main()
 {
 	t_stack_node *a;
+	t_stack_node *b;
 	t_stack_node *test_stack;
+	t_stack_node *test_stack_two;
 	char *values[5] = {values[0] = "\0", values[1] = "100", values[2] = "200", values[3] = "300", values[4] = 0};
 	a = 0;
+	b = 0;
 	stack_init(&a, values + 1);
+	stack_init(&b, values + 1);
 	test_stack = a;
 	print_node(test_stack);
 	r_rotate(&test_stack);
 	print_node(test_stack);
-	r_rotate(&test_stack);
+	swap(&test_stack);
 	print_node(test_stack);
-	rotate(&test_stack);
+	test_stack_two = b;
+	push(&test_stack, &test_stack_two);
 	print_node(test_stack);
-	rotate(&test_stack);
-	print_node(test_stack);
+	print_node(test_stack_two);
 	return (0);
 }
