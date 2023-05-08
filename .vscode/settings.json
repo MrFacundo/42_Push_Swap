@@ -2,6 +2,7 @@
 	"files.associations": {
 		"*.css": "tailwindcss",
 		"*.js": "javascriptreact",
-		"libft.h": "c"
+		"libft.h": "c",
+		"push_swap.h": "c"
 	}
 }

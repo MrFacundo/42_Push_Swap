@@ -207,7 +207,7 @@ int main()
 		values[1] = "1",
 		values[2] = "2",
 		values[3] = "3",
-		values[4] = "-10",
+		values[4] = 0,
 		values[5] = "99",
 		values[6] = 0
 		};
