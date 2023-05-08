@@ -1,54 +1,6 @@
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-t_stack_node	*get_last_node(t_stack_node *head)
-{
-	if (!head)
-		return 0;
-	while (head->next)
-		head = head->next;
-	return (head);
-}
-
-t_stack_node *get_highest_value_node(t_stack_node *stack)
-{
-	t_stack_node	*node;
-	t_stack_node	*highest_value_node;
-
-	node = stack;
-	highest_value_node = node;
-	while (node)
-	{
-		if (node->value > highest_value_node->value)
-			highest_value_node = node;
-		node = node->next;
-	}
-	return (highest_value_node);
-}
-
-static	void push(t_stack_node **dst, t_stack_node **src)
-{
-	t_stack_node	*node_to_push;
-
-	if (!*src)
-		return ;
-	node_to_push = *src;
-	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = 0;
-	if (!*dst)
-	{
-		*dst = node_to_push;
-		node_to_push->next = 0;
-	}
-	else
-	{
-		node_to_push->next = *dst;
-		(*dst)->prev = node_to_push;
-		*dst = node_to_push;
-	}
-	printf("push\n");
-}
 
 static void	swap(t_stack_node **head)
 {
@@ -65,36 +17,6 @@ static void	swap(t_stack_node **head)
     // Update the new head node 
 	(*head)->next = (*head)->prev;
 	(*head)->prev = NULL;
-}
-
-static	void rotate(t_stack_node **stack)
-{
-	t_stack_node	*last_node;
-	
-	if (NULL == stack || NULL == *stack)
-		return ;
-	last_node = get_last_node(*stack);
-	last_node->next = *stack;
-	last_node->next->prev = last_node;
-	*stack = (*stack)->next;
-	(*stack)->prev = 0;
-	last_node->next->next= 0;
-	printf("rotate\n");
-}
-
-static void	r_rotate(t_stack_node **stack)
-{
-	t_stack_node	*last_node;
-
-	if (NULL == stack || NULL == *stack)
-		return ;
-	last_node = get_last_node(*stack);
-	last_node->next = *stack;
-	(*stack)->prev = last_node;
-	*stack = last_node;
-	last_node->prev->next = 0;
-	last_node->prev = NULL;
-	printf("r_rotate\n"); 
 }
 
 void	append_node(t_stack_node **stack, int nbr)
@@ -149,41 +71,27 @@ void	sort_three(t_stack_node **stack)
 		swap(stack);
 }
 
-void	print_node(t_stack_node *stack)
+void	move_nodes(t_stack_node **a, t_stack_node **b)
 {
-	printf("Node address\t value\t prev\t prev address\t next\t next address\n");
-	while (stack)
-	{
-		printf(
-			"%p\t %d\t %d\t %p\t %d\t %p\n",
-			stack,
-			stack->value,
-			stack->prev ? stack->prev->value : 0,
-			stack->prev ? stack->prev : 0,
-			stack->next ? stack->next->value : 0,
-			stack->next ? stack->next : 0
-			);
-		stack = stack->next;
-	}
-	printf("*********************************\n");
+	t_stack_node	*node_to_push;
+
+	node_to_push = get_lowest_cost_node(*b);
+	if (node_to_push->above_median && node_to_push->target_node->above_median)
+		rotate_both(a, b);
+	if (!(node_to_push->above_median) && !(node_to_push->target_node->above_median))
+		reverse_rotate_both(a, b);
+	rotate_one(b, node_to_push,'b');
+	rotate_one(a, node_to_push->target_node,'a');
+	pa(a, b);	
 }
 
-int	stack_size(t_stack_node *stack)
-{
-	int	count;
 
-	if (!stack)
-		return (0);
-	count = 0;
-	while (stack && ++count)
-		stack = stack->next;
-	return (count);
-}
 
 void	sort(t_stack_node **a, t_stack_node **b)
 {
 	int	stack_length;
 	int	i;
+	t_stack_node	*smallest_value_node;
 
 	stack_length = stack_size(*a);
 	while (stack_length-- > 3)
@@ -194,6 +102,14 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		init_nodes(*a, *b);
 		move_nodes(a, b);
 	}
+	set_position(*a);
+	smallest_value_node = get_smallest_value_node(*a);	
+	if (smallest_value_node->above_median)
+		while (*a != smallest_value_node)
+			ra(a);
+	else
+		while (*a != smallest_value_node)
+			rra(a);
 }
 
 int main()

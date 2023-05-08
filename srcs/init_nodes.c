@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 09:54:28 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/08 17:38:12 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/08 18:46:49 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,13 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 
 set_push_cost(t_stack_node *a, t_stack_node *b)
 {
-	t_stack_node	*node;
-	int				push_cost;
-
 	while (b)
 	{
-		b->push_cost = b->position;
-		if(!(b->above_median))
-			b->push_cost = stack_size(b) - b->position;
 		if (b->above_median)
+			b->push_cost = b->position;
+		else
+			b->push_cost = stack_size(b) - b->position;
+		if (b->target_node->above_median)
 			b->push_cost += b->target_node->position;
 		else
 			b->push_cost += stack_size(a) - b->target_node->position;
@@ -81,9 +79,30 @@ set_push_cost(t_stack_node *a, t_stack_node *b)
 }
 
 
+void	set_lowest_cost_node(t_stack_node *b)
+{
+	t_stack_node	*lowest_cost_node;
+	t_stack_node	*node;
+	long			lowest_cost;
+
+	lowest_cost = LONG_MAX;
+	while (b)
+	{
+		if (b->push_cost < lowest_cost)
+		{
+			lowest_cost = b->push_cost;
+			lowest_cost_node = b;
+		}
+		b = b->next;
+	}
+	lowest_cost_node->has_lowest_cost = 1;
+}
+
 void	init_nodes(t_stack_node *a, t_stack_node *b)
 {
 	set_position(a);
 	set_position(b);
 	set_target_node(a, b);
+	set_push_cost(a, b);
+	set_lowest_cost_node(b);
 }
