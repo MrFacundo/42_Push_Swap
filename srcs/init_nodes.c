@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 09:54:28 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/08 11:14:53 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/08 17:38:12 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ set_push_cost(t_stack_node *a, t_stack_node *b)
 		b->push_cost = b->position;
 		if(!(b->above_median))
 			b->push_cost = stack_size(b) - b->position;
-		else if (b->above_median)
+		if (b->above_median)
 			b->push_cost += b->target_node->position;
 		else
 			b->push_cost += stack_size(a) - b->target_node->position;
