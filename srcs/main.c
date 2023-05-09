@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/09 10:34:01 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/09 15:26:57 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	stack_init(t_stack_node **stack, char **argv)
 	while(argv[i])
 	{
 		nbr = ft_atoi(argv[i]);
+		if (!value_is_unique(*stack, nbr))
+			handle_error(stack, UNIQUE_VALUES);
 		append_node(stack, nbr);
 		i++;
 	}
