@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 09:54:28 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/08 18:46:49 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/09 09:35:23 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 			node = node->next;
 		}
 		if (best_match_value == LONG_MAX)
-			b->target_node = get_smallest_node(a);
+			b->target_node = get_lowest_value_node(a);
 		else
 			b->target_node = target_node;
 		b = b->next;
 	}
 }
 
-set_push_cost(t_stack_node *a, t_stack_node *b)
+void	set_push_cost(t_stack_node *a, t_stack_node *b)
 {
 	while (b)
 	{
@@ -77,7 +77,6 @@ set_push_cost(t_stack_node *a, t_stack_node *b)
 		b = b->next;
 	}
 }
-
 
 void	set_lowest_cost_node(t_stack_node *b)
 {

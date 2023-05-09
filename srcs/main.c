@@ -1,23 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
+/*   Updated: 2023/05/09 10:34:01 by facundo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
-
-
-static void	swap(t_stack_node **head)
-{
-	if (!*head || !head)
-		return ;
-    // Update the head pointer to point to the second node in the list
-	*head = (*head)->next;
-    // Update the previous and next pointers of the former head node
-	(*head)->prev->prev = *head;
-	(*head)->prev->next = (*head)->next;
-    // Update the prev pointer of the last (3rd) node 
-	if ((*head)->next)
-		(*head)->next->prev = (*head)->prev;
-    // Update the new head node 
-	(*head)->next = (*head)->prev;
-	(*head)->prev = NULL;
-}
 
 void	append_node(t_stack_node **stack, int nbr)
 {
@@ -68,7 +62,7 @@ void	sort_three(t_stack_node **stack)
 	else if ((*stack)->next == highest_value_node)
 		r_rotate(stack);
 	if ((*stack)->value > (*stack)->next->value)
-		swap(stack);
+		sa(stack);
 }
 
 void	move_nodes(t_stack_node **a, t_stack_node **b)
@@ -77,15 +71,13 @@ void	move_nodes(t_stack_node **a, t_stack_node **b)
 
 	node_to_push = get_lowest_cost_node(*b);
 	if (node_to_push->above_median && node_to_push->target_node->above_median)
-		rotate_both(a, b);
+		rotate_both(a, b, node_to_push);
 	if (!(node_to_push->above_median) && !(node_to_push->target_node->above_median))
-		reverse_rotate_both(a, b);
+		reverse_rotate_both(a, b, node_to_push);
 	rotate_one(b, node_to_push,'b');
 	rotate_one(a, node_to_push->target_node,'a');
 	pa(a, b);	
 }
-
-
 
 void	sort(t_stack_node **a, t_stack_node **b)
 {
@@ -101,15 +93,30 @@ void	sort(t_stack_node **a, t_stack_node **b)
 	{
 		init_nodes(*a, *b);
 		move_nodes(a, b);
+		print_node(*a);
 	}
 	set_position(*a);
-	smallest_value_node = get_smallest_value_node(*a);	
+	smallest_value_node = get_lowest_value_node(*a);	
 	if (smallest_value_node->above_median)
 		while (*a != smallest_value_node)
 			ra(a);
 	else
 		while (*a != smallest_value_node)
 			rra(a);
+}
+
+int	stack_is_sorted(t_stack_node *stack)
+{
+	t_stack_node	*node;
+
+	node = stack;
+	while (node->next)
+	{
+		if (node->value > node->next->value)
+			return (0);
+		node = node->next;
+	}
+	return (1);
 }
 
 int main()
@@ -120,22 +127,26 @@ int main()
 	
 	char *values[7] = {
 		values[0] = "\0",
-		values[1] = "1",
-		values[2] = "2",
-		values[3] = "3",
-		values[4] = 0,
+		values[1] = "0",
+		values[2] = "-2",
+		values[3] = "33",
+		values[4] = "-780",
 		values[5] = "99",
 		values[6] = 0
 		};
 	a = 0;
 	b = 0;
 	stack_init(&a, values + 1);
+	print_node(a);
 	stack_length = stack_size(a);
+	if (stack_is_sorted(a))
+		return (0);
 	if (stack_length == 3)
 		sort_three(&a);
 	else if (stack_length == 2)
-		swap(&a);
+		sa(&a);
 	else
 		sort(&a, &b);
+	print_node(a);
 	return (0);
 }
