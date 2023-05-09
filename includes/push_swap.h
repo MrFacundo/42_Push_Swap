@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/09 15:26:49 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/09 15:40:46 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #include <stdarg.h>
 #include <limits.h> // LONG_MAX
+# include <errno.h>	// errno
+
 
 // error messages
 # define BAD_ARGS "Bad args m8"
