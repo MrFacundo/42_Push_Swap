@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: facu <facu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/11 17:38:30 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/11 18:15:45 by facu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,7 @@ int main(int argc, char **argv)
 		return (0);
 	a = 0;
 	b = 0;
-	argv++;
-	argc--;
-	stack_init(&a, argv, argc);
+	stack_init(&a, argv++, argc--);
 	print_node(a);
 	stack_length = stack_size(a);
 	if (stack_is_sorted(a))
