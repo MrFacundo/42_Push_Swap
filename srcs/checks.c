@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: facu <facu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:08:31 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/11 17:08:47 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/11 18:21:12 by facu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int value_is_unique(t_stack_node *stack, int value)
 	return (1);
 }
 
-void	handle_error(t_stack_node *stack, char *message)
+void	handle_error(t_stack_node **stack, char *message)
 {
 	ft_putstr_fd("Error: ", 2);
 	ft_putstr_fd(message, 2);

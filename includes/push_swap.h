@@ -6,7 +6,7 @@
 /*   By: facu <facu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/11 18:15:45 by facu             ###   ########.fr       */
+/*   Updated: 2023/05/11 20:39:15 by facu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_node(t_stack_node *stack);
 
 /* checks.c */
 int		value_is_unique(t_stack_node *stack, int value);
-void	handle_error(t_stack_node *stack, char *message);
+void	handle_error(t_stack_node **stack, char *message);
 int		is_int(char *str);
 
 /* init_nodes.c */
@@ -68,7 +68,10 @@ void	pa(t_stack_node **a, t_stack_node **b);
 void	ra(t_stack_node **a);
 void	rb(t_stack_node **b);
 void	rra(t_stack_node **a);
+void	rrb(t_stack_node **b);
+void	rr(t_stack_node **a, t_stack_node **b);
 void	rrr(t_stack_node **a, t_stack_node **b);
+
 
 /* stack_utils.c */
 t_stack_node	*get_last_node(t_stack_node *head);

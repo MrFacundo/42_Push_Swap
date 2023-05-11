@@ -6,7 +6,7 @@
 /*   By: facu <facu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/11 18:15:45 by facu             ###   ########.fr       */
+/*   Updated: 2023/05/11 21:27:07 by facu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	sort_three(t_stack_node **stack)
 
 	highest_value_node = get_highest_value_node(*stack);
 	if (*stack == highest_value_node)
-		rotate(stack);
+		ra(stack);
 	else if ((*stack)->next == highest_value_node)
-		r_rotate(stack);
+		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
 }
@@ -127,8 +127,12 @@ int main(int argc, char **argv)
 {
 	t_stack_node *a;
 	t_stack_node *b;
+	char *test;
 	int	stack_length;
+
 	
+	test == argv[1];
+	printf("%s\n", argv[1]);
 	if (argc < 2)
 		return (0);
 	a = 0;
