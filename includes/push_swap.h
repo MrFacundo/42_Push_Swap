@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/09 15:40:46 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/11 17:12:05 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define BAD_ARGS "Bad args m8"
 # define MALLOC_ERROR "Malloc error m8"
 # define UNIQUE_VALUES "Arg values must be unique m8"
+# define NOT_INT "Arg is not an int m8"
 typedef struct s_stack_node
 {
 	int					value;

@@ -20,7 +20,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) libft
 		@echo  "$(GRAY)----Compiling $(NAME)----$(NONE)"
-		gcc -o $@ $(OBJECTS) $(LFLAGS)
+		$(CC) -o $@ $(OBJECTS) $(LFLAGS)
 		@echo "$(GREEN)$(NAME) Compiled! ᕦ(♥_♥)ᕤ$(NONE)\n"
 
 .c.o:	%.o : %.c

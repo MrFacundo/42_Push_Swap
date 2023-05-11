@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/09 15:26:57 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/11 17:38:30 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	append_node(t_stack_node **stack, int nbr)
 	}
 }
 
-void	stack_init(t_stack_node **stack, char **argv)
+void	stack_init(t_stack_node **stack, char **argv, int argc)
 {
 	int nbr;
 	int	i;
@@ -46,6 +46,8 @@ void	stack_init(t_stack_node **stack, char **argv)
 	i = 0;
 	while(argv[i])
 	{
+		if (!is_int(argv[i]))
+			handle_error(stack, NOT_INT);
 		nbr = ft_atoi(argv[i]);
 		if (!value_is_unique(*stack, nbr))
 			handle_error(stack, UNIQUE_VALUES);
@@ -121,24 +123,19 @@ int	stack_is_sorted(t_stack_node *stack)
 	return (1);
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	t_stack_node *a;
 	t_stack_node *b;
 	int	stack_length;
 	
-	char *values[7] = {
-		values[0] = "\0",
-		values[1] = "0",
-		values[2] = "-2",
-		values[3] = "33",
-		values[4] = "-780",
-		values[5] = "99",
-		values[6] = 0
-		};
+	if (argc < 2)
+		return (0);
 	a = 0;
 	b = 0;
-	stack_init(&a, values + 1);
+	argv++;
+	argc--;
+	stack_init(&a, argv, argc);
 	print_node(a);
 	stack_length = stack_size(a);
 	if (stack_is_sorted(a))
