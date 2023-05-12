@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:24 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/09 10:21:32 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/12 13:54:28 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ static void	swap(t_stack_node **head)
 void	sa(t_stack_node **a)
 {
 	swap(a);
-	printf("sa\n");
+	ft_putstr_fd("sa\n", 1);
 }
 
 void	sb(t_stack_node **b)
 {
 	swap(b);
-	printf("sb\n");
+	ft_putstr_fd("sb\n", 1);
 }

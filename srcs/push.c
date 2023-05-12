@@ -6,14 +6,14 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:49:48 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/09 10:14:29 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/12 13:54:28 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-void push(t_stack_node **dst, t_stack_node **src)
+void push(t_stack_node **src, t_stack_node **dst)
 {
 	t_stack_node	*node_to_push;
 
@@ -40,5 +40,5 @@ void push(t_stack_node **dst, t_stack_node **src)
 void	pa(t_stack_node **a, t_stack_node **b)
 {
 	push(a, b);
-	printf("pa\n");
+	ft_putstr_fd("pa\n", 1);
 }
