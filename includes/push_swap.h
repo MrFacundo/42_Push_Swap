@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/12 15:27:23 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:33:41 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_stack_node
 }				t_stack_node;
 
 /* debug.c */
-void	print_node(t_stack_node *stack);
+void	print_stack(t_stack_node *stack);
 
 /* checks.c */
 int		value_is_unique(t_stack_node *stack, int value);
@@ -63,7 +63,7 @@ void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *node_to_move,
 void	rotate_one(t_stack_node **stack, t_stack_node *node, char stack_name);
 
 /* push.c */
-void	pa(t_stack_node **a, t_stack_node **b);
+void	push_direction(t_stack_node **a, t_stack_node **b, char *instruction);
 
 /* rotate.c */
 void	rotate_stack(t_stack_node **stack, char *instruction);

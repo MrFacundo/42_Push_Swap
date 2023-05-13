@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:04:08 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/09 10:35:13 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:32:13 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,20 @@ t_stack_node *get_highest_value_node(t_stack_node *stack)
 	return (highest_value_node);
 }
 
-t_stack_node	*get_lowest_value_node(t_stack_node *node)
+t_stack_node	*get_lowest_value_node(t_stack_node *stack)
 {
-	t_stack_node	*smallest_value_node;
+	t_stack_node	*node;
+	t_stack_node	*lowest_value_node;
 
-	smallest_value_node = node;
+	node = stack;
+	lowest_value_node = node;
 	while (node)
 	{
-		if (node->value < smallest_value_node->value)
-			smallest_value_node = node;
+		if (node->value < lowest_value_node->value)
+			lowest_value_node = node;
 		node = node->next;
 	}
-	return (smallest_value_node);
+	return (lowest_value_node);
 }
 
 t_stack_node	*get_lowest_cost_node(t_stack_node *node)

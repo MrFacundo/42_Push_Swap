@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:15:59 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/12 13:57:10 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/13 14:28:11 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	rotate_stacks(t_stack_node **a, t_stack_node **b, char *instruction)
 		rotate_direction(a, 1);
 		rotate_direction(b, 1);
 	}
-	else if (ft_strncmp("rrr", instruction, 4) == 0)
+	else if (!ft_strncmp("rrr", instruction, 4))
 	{
 		rotate_direction(a, -1);
 		rotate_direction(b, -1);

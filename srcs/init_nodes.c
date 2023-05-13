@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 09:54:28 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/09 09:35:23 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:22:53 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_position(t_stack_node *node)
 	i = 0;
 	while (node)
 	{
-		if (i < stack_center)
+		if (i <= stack_center)
 			node->above_median = 1;
 		else
 			node->above_median = 0;
@@ -64,16 +64,22 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 
 void	set_push_cost(t_stack_node *a, t_stack_node *b)
 {
+	int	len_a;
+	int	len_b;
+
+	len_a = stack_size(a);
+	len_b = stack_size(b);
+
 	while (b)
 	{
 		if (b->above_median)
 			b->push_cost = b->position;
 		else
-			b->push_cost = stack_size(b) - b->position;
+			b->push_cost = len_b - b->position;
 		if (b->target_node->above_median)
 			b->push_cost += b->target_node->position;
 		else
-			b->push_cost += stack_size(a) - b->target_node->position;
+			b->push_cost += len_a - b->target_node->position;
 		b = b->next;
 	}
 }

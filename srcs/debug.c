@@ -1,7 +1,7 @@
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-void	print_node(t_stack_node *stack)
+void	print_stack(t_stack_node *stack)
 {
 	printf("Node address\t value\t prev\t prev address\t next\t next address\n");
 	while (stack)

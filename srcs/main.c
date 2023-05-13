@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/12 15:27:23 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:33:41 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	move_nodes(t_stack_node **a, t_stack_node **b)
 		rotate_both(a, b, node_to_push, "rrr");
 	rotate_one(b, node_to_push,'b');
 	rotate_one(a, node_to_push->target_node,'a');
-	pa(b, a);	
+	push_direction(a, b, "pa");
 }
 
 void	sort(t_stack_node **a, t_stack_node **b)
@@ -48,9 +48,10 @@ void	sort(t_stack_node **a, t_stack_node **b)
 
 	stack_length = stack_size(*a);
 	while (stack_length-- > 3)
-		pa(a, b);
+		push_direction(a, b, "pb");
 	sort_three(a);
-	while (*b)
+	while (*b)	while (*b)
+
 	{
 		init_nodes(*a, *b);
 		move_nodes(a, b);
@@ -91,7 +92,7 @@ int main(int argc, char **argv)
 	a = 0;
 	b = 0;
 	stack_init(&a, ++argv, --argc);
-	// print_node(a);
+	// print_stack(a);
 	stack_length = stack_size(a);
 	if (stack_is_sorted(a))
 		return (0);
@@ -101,6 +102,6 @@ int main(int argc, char **argv)
 		sa(&a);
 	else
 		sort(&a, &b);
-	// print_node(a);
+	print_stack(a);
 	return (0);
 }
