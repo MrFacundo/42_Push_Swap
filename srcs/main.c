@@ -6,7 +6,7 @@
 /*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/13 16:33:41 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:30:59 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		push_direction(a, b, "pb");
 	sort_three(a);
 	while (*b)	while (*b)
-
 	{
 		init_nodes(*a, *b);
 		move_nodes(a, b);
@@ -92,16 +91,20 @@ int main(int argc, char **argv)
 	a = 0;
 	b = 0;
 	stack_init(&a, ++argv, --argc);
-	// print_stack(a);
 	stack_length = stack_size(a);
 	if (stack_is_sorted(a))
+	{
+		free_stack(&a);
 		return (0);
+	}
 	if (stack_length == 3)
 		sort_three(&a);
 	else if (stack_length == 2)
 		sa(&a);
 	else
 		sort(&a, &b);
-	print_stack(a);
+	// print_stack(a);
+	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }

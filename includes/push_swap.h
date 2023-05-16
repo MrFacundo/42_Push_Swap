@@ -6,7 +6,7 @@
 /*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/13 16:33:41 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:03:49 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 #include <limits.h> // LONG_MAX
 # include <errno.h>	// errno
 
-
-// error messages
-# define BAD_ARGS "Bad args m8"
-# define MALLOC_ERROR "Malloc error m8"
-# define UNIQUE_VALUES "Values must be unique m8"
-# define NOT_INT "Arg is not an int m8"
 typedef struct s_stack_node
 {
 	int					value;
@@ -42,8 +36,9 @@ void	print_stack(t_stack_node *stack);
 
 /* checks.c */
 int		value_is_unique(t_stack_node *stack, int value);
-void	handle_error(t_stack_node **stack, char *message);
+void	handle_error(t_stack_node **stack);
 int		is_int(char *str);
+void	free_stack(t_stack_node **stack);
 
 /* init_nodes.c */
 void	set_position(t_stack_node *node);
@@ -69,8 +64,6 @@ void	push_direction(t_stack_node **a, t_stack_node **b, char *instruction);
 void	rotate_stack(t_stack_node **stack, char *instruction);
 void	rotate_stacks(t_stack_node **a, t_stack_node **b, char *instruction);
 
-
-
 /* stack_utils.c */
 t_stack_node	*get_last_node(t_stack_node *head);
 t_stack_node 	*get_highest_value_node(t_stack_node *stack);
@@ -79,7 +72,6 @@ t_stack_node	*get_lowest_cost_node(t_stack_node *node);
 int				stack_size(t_stack_node *stack);
 
 /* swap.c */
-
 void	sa(t_stack_node **a);
 void	sb(t_stack_node **b);
 

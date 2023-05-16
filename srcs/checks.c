@@ -6,7 +6,7 @@
 /*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:08:31 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/13 14:28:48 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:06:54 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,25 @@ int value_is_unique(t_stack_node *stack, int value)
 	return (1);
 }
 
-void	handle_error(t_stack_node **stack, char *message)
+void	handle_error(t_stack_node **stack)
 {
-	ft_putstr_fd("Error: ", 2);
-	ft_putstr_fd(message, 2);
-	ft_putchar_fd('\n', 2);
-	// free stuff
+	ft_putstr_fd("Error\n", 2);
+	free_stack(stack);
 	exit(1);
+}
+
+void	free_stack(t_stack_node **stack)
+{
+	t_stack_node	*tmp;
+
+	if (!stack)
+		return ;
+	while (*stack)
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
+	}
 }
 
 int	is_int(char *str)

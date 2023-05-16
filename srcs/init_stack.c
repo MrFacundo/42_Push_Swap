@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:59:12 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/12 14:00:27 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/16 16:03:26 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	stack_init(t_stack_node **stack, char **argv, int argc)
 	while(argv[i])
 	{
 		if (!is_int(argv[i]))
-			handle_error(stack, NOT_INT);
+			handle_error(stack);
 		nbr = ft_atoi(argv[i]);
 		if (!value_is_unique(*stack, nbr))
-			handle_error(stack, UNIQUE_VALUES);
+			handle_error(stack);
 		append_node(stack, nbr);
 		i++;
 	}
