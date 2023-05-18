@@ -4,7 +4,7 @@ OBJECTS 		= $(SOURCES:.c=.o)
 HEADER			= -Iincludes
 LIBFT_DIR		= ./libft
 CC 				= gcc
-CFLAGS_PROD 	=
+CFLAGS_PROD 	= -g -Wall -Wextra -Werror -O3
 LFLAGS		 	= -L$(LIBFT_DIR) -lft
 
 # --- COLORS ---
