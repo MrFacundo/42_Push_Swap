@@ -1,3 +1,6 @@
 [submodule "libft"]
 	path = libft
 	url = https://github.com/MrFacundo/42_Libft.git
+[submodule "push_swap_averager"]
+	path = push_swap_averager
+	url = https://github.com/Vinni-Cedraz/push_swap_averager.git

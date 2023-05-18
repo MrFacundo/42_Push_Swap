@@ -14,11 +14,16 @@ git rm -f path/to/submodule
 valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all -s <binary>
 
 # Tester 1
-
+## test 1
 make -C push_swap_averager
+## test 2
+./tester.sh
+## test 3
+push_swap_test_linux.sh
+## visualizer
+./bin/visualizer
 
-# for cmake to work
-
+# install and make  cmake to work
 sudo apt-get install pkg-config
 sudo apt-get install mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev\nsudo apt-get install libglew-dev libglfw3-dev libglm-dev\nsudo apt-get install libao-dev libmpg123-dev
 sudo apt-get install -y libudev-dev
