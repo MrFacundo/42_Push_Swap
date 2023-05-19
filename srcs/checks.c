@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:08:31 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/16 16:06:54 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:04:53 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-int value_is_unique(t_stack_node *stack, int value)
+int	value_is_unique(t_stack_node *stack, int value)
 {
 	while (stack)
 	{

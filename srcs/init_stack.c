@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:59:12 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/16 16:03:26 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:07:41 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ void	append_node(t_stack_node **stack, int nbr)
 
 void	stack_init(t_stack_node **stack, char **argv, int argc)
 {
-	int nbr;
+	int	nbr;
 	int	i;
 
 	i = 0;
-	while(argv[i])
+	while (argv[i])
 	{
 		if (!is_int(argv[i]))
 			handle_error(stack);

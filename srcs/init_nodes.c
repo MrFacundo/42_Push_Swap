@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 09:54:28 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/13 16:22:53 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:06:58 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-
 void	set_position(t_stack_node *node)
 {
 	int		i;
-	int stack_center;
-	
+	int		stack_center;
+
 	if (!node)
 		return ;
 	stack_center = stack_size(node) / 2;
@@ -69,7 +68,6 @@ void	set_push_cost(t_stack_node *a, t_stack_node *b)
 
 	len_a = stack_size(a);
 	len_b = stack_size(b);
-
 	while (b)
 	{
 		if (b->above_median)

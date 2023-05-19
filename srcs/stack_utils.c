@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:04:08 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/13 16:32:13 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:20:26 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 t_stack_node	*get_last_node(t_stack_node *head)
 {
 	if (!head)
-		return 0;
+		return (0);
 	while (head->next)
 		head = head->next;
 	return (head);
 }
 
-t_stack_node *get_highest_value_node(t_stack_node *stack)
+t_stack_node	*get_highest_value_node(t_stack_node *stack)
 {
 	t_stack_node	*node;
 	t_stack_node	*highest_value_node;

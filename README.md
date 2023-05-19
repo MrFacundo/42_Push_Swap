@@ -1,46 +1,26 @@
-# push_swap_tester
-Script to test Push Swap project
+****<h1 align="center">
+	📖 Push Swap
+</h1>
 
-<img src="screenshot.png" width="75%">
+<h2 align="center">
+	42 Lisbon Cursus - May 2023
+</h2>
 
-### Usage
+<p align="center">
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/MrFacundo/42_Push_Swap?color=lightblue" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/MrFacundo/42_Push_Swap?color=critical" /> 
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MrFacundo/42_Push_Swap?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MrFacundo/42_Push_Swap?color=green" />
+</p>
 
-```bash
-git clone git@github.com:laisarena/push_swap_tester.git
-cd push_swap_tester
-cp ../path_to_push_swap_folder/push_swap .
-bash tester.sh
-```
+## Summary
 
-You can change the variable 'NUM_TESTS' which determines how many times the program will be run to calculate the averages of operations, using the flag -n <NUMBER>
+Sorting algorythms and complexity. The goal of this project is to create a program that sorts a given list of random numbers with a limited set of instructions, using the lowest possible number of actions.
 
-You can also choose to test only a specific part of the program using the flag -f, as follows:
-* -f error : Error management
-* -f sorted: Check if sorted lists do nothing
-* -f simple: Lists of size 3 and 5
-* -f middle: Lists of size 100
-* -f advanced: Lists of size 500
+### Allowed External Functions
 
-### Test Log
-You can see the test log into the folder "log_error"
-```bash
-$ cd log_error
-```
-And choose the number of numbers tested into the folders "five", "hundred" and "five_hundred"<br>
-Then, you can use the command cat to see the content log
-```bash
-$ ls
-five hundred five_hundred
-$ cd five
-$ ls
-test_0 test_5
-$ cat test_0
-Random list of Five numbers
-2 0 1 3 4
-sa
-pb
-pa
-sa
-Qtt commands = 4
-Test Checker = KO
-```
+read, write, malloc, free, exit
+
+## Subject
+[📗️](en.subject.pdf) 
+

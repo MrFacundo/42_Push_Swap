@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:49:48 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/13 14:54:22 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:13:31 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-void push(t_stack_node **src, t_stack_node **dst)
+void	push(t_stack_node **src, t_stack_node **dst)
 {
 	t_stack_node	*node_to_push;
 
