@@ -6,14 +6,14 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:24 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/19 11:21:04 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 17:02:48 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "../includes/checker.h"
+#include "../../libft/libft.h"
 
-static void	swap(t_stack_node **head)
+void	swap(t_stack_node **head)
 {
 	if (!*head || !head)
 		return ;

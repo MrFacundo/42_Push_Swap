@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 15:50:58 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/19 15:51:04 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 17:24:53 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	append_node(t_stack_node **stack, int nbr)
 	}
 }
 
-void	stack_init(t_stack_node **stack, char **argv, int argc)
+void	stack_init(t_stack_node **stack, char **argv, int argc, int *error)
 {
 	int	nbr;
 	int	i;
@@ -47,10 +47,16 @@ void	stack_init(t_stack_node **stack, char **argv, int argc)
 	while (argv[i])
 	{
 		if (!is_int(argv[i]))
-			handle_error(stack);
+		{
+			*error = 1;
+			return ;
+		}
 		nbr = ft_atoi(argv[i]);
 		if (!value_is_unique(*stack, nbr))
-			handle_error(stack);
+		{
+			*error = 1;
+			return ;
+		}
 		append_node(stack, nbr);
 		i++;
 	}

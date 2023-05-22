@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/19 15:57:20 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 17:06:37 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ int	main(int argc, char **argv)
 		sort(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
-	print_stack(a);
+	// print_stack(a);
 	return (0);
 }

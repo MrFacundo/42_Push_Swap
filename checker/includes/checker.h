@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:50:41 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/19 15:52:50 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 17:25:47 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	print_stack(t_stack_node *stack);
 
 /* checks.c */
 int		value_is_unique(t_stack_node *stack, int value);
-void	handle_error(t_stack_node **stack);
 int		is_int(char *str);
 void	free_stack(t_stack_node **stack);
 
@@ -49,7 +48,7 @@ void	set_lowest_cost_node(t_stack_node *b);
 void	init_nodes(t_stack_node *a, t_stack_node *b);
 
 /* init_stack.c */
-void	stack_init(t_stack_node **stack, char **argv, int argc);
+void	stack_init(t_stack_node **stack, char **argv, int argc, int *error);
 
 /* main.c */
 int		main();
@@ -59,11 +58,10 @@ void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *node_to_move,
 void	rotate_one(t_stack_node **stack, t_stack_node *node, char stack_name);
 
 /* push.c */
-void	push_direction(t_stack_node **a, t_stack_node **b, char *instruction);
+void	push(t_stack_node **src, t_stack_node **dst);
 
 /* rotate.c */
-void	rotate_stack(t_stack_node **stack, char *instruction);
-void	rotate_stacks(t_stack_node **a, t_stack_node **b, char *instruction);
+void	rotate_direction(t_stack_node **stack, int direction);
 
 /* stack_utils.c */
 t_stack_node	*get_last_node(t_stack_node *head);
@@ -73,7 +71,6 @@ t_stack_node	*get_lowest_cost_node(t_stack_node *node);
 int				stack_size(t_stack_node *stack);
 
 /* swap.c */
-void	sa(t_stack_node **a);
-void	sb(t_stack_node **b);
+void	swap(t_stack_node **head);
 
 #endif

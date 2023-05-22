@@ -6,12 +6,12 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:49:48 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/19 11:13:31 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 16:52:24 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "../includes/checker.h"
+#include "../../libft/libft.h"
 
 void	push(t_stack_node **src, t_stack_node **dst)
 {

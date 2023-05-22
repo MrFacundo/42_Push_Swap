@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:23:03 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/13 14:29:03 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:45:24 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../libft/libft.h"
+#include "../includes/checker.h"
+#include "../../libft/libft.h"
 
 void	rotate_both(t_stack_node **a,
 					t_stack_node **b,

@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:08:31 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/19 15:58:53 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 17:25:14 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ int	value_is_unique(t_stack_node *stack, int value)
 		stack = stack->next;
 	}
 	return (1);
-}
-
-void	handle_error(t_stack_node **stack)
-{
-	ft_putstr_fd("Error\n", 2);
-	free_stack(stack);
-	exit(1);
 }
 
 void	free_stack(t_stack_node **stack)

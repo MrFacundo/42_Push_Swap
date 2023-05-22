@@ -6,15 +6,15 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:15:59 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/19 11:18:56 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 17:07:04 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-// direction 1 = stack moves up 1 2 3 => 2 3 1
-// direction -1 = stack moves down 1 2 3 => 3 1 2
+// direction 1 = ra/rb = stack moves up 1 2 3 => 2 3 1
+// direction -1 = rra/rrb = stack moves down 1 2 3 => 3 1 2
 void	rotate_direction(t_stack_node **stack, int direction)
 {
 	t_stack_node	*last_node;

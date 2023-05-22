@@ -1,7 +1,6 @@
 NAME 			= checker
 SOURCES 		= $(shell echo srcs/*.c)
 OBJECTS 		= $(SOURCES:.c=.o)
-HEADER			= -Iincludes
 LIBFT_DIR		= ../libft
 CC 				= gcc
 CFLAGS_PROD 	= -g -Wall -Wextra -Werror -O3
