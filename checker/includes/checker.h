@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:50:41 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/22 17:25:47 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 22:10:28 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ typedef struct s_stack_node
 	int					has_lowest_cost;
 }				t_stack_node;
 
+
 /* debug.c */
 void	print_stack(t_stack_node *stack);
 
 /* checks.c */
 int		value_is_unique(t_stack_node *stack, int value);
+void	handle_error(t_stack_node **stack);
 int		is_int(char *str);
 void	free_stack(t_stack_node **stack);
 
@@ -48,7 +50,14 @@ void	set_lowest_cost_node(t_stack_node *b);
 void	init_nodes(t_stack_node *a, t_stack_node *b);
 
 /* init_stack.c */
-void	stack_init(t_stack_node **stack, char **argv, int argc, int *error);
+void	stack_init(t_stack_node **stack, char **argv, int argc);
+
+
+/* checks.c */
+int		value_is_unique(t_stack_node *stack, int value);
+void	handle_error(t_stack_node **stack);
+int		is_int(char *str);
+void	free_stack(t_stack_node **stack);
 
 /* main.c */
 int		main();

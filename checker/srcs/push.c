@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:49:48 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/22 16:52:24 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 21:49:25 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,4 @@ void	push(t_stack_node **src, t_stack_node **dst)
 		(*dst)->prev = node_to_push;
 		*dst = node_to_push;
 	}
-}
-
-void	push_direction(t_stack_node **a, t_stack_node **b, char *instruction)
-{
-	if (!ft_strncmp("pa", instruction, 3))
-		push(b, a);
-	else if (!ft_strncmp("pb", instruction, 3))
-		push(a, b);
-	ft_putstr_fd(instruction, 1);
-	ft_putchar_fd('\n', 1);
 }

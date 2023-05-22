@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:48:33 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/22 18:03:43 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 22:10:14 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,40 +28,40 @@ int	stack_is_sorted(t_stack_node *stack)
 	return (1);
 }
 
-void	process_instructions(char **table, t_stack_node **a, t_stack_node **b, int error)
+void	process_instructions(char **table, t_stack_node **a, t_stack_node **b)
 {
 	int	i;
 
 	i = 0;
 	while (table[i])
 	{
-		if (ft_strncmp(table[i], "sa", 3), 4 == 0)
+		if (!ft_strncmp(table[i], "sa", 3))
 			swap(a);
-		else if (ft_strncmp(table[i], "sb", 3) == 0)
+		else if (!ft_strncmp(table[i], "sb", 3))
 			swap(b);
-		else if (ft_strncmp(table[i], "ss", 3) == 0)
+		else if (!ft_strncmp(table[i], "ss", 3))
 		{
 			swap(a);
 			swap(b);
 		}
-		else if (ft_strncmp(table[i], "pa", 3) == 0)
+		else if (!ft_strncmp(table[i], "pa", 3))
 			push(b, a);
-		else if (ft_strncmp(table[i], "pb", 3) == 0)
+		else if (!ft_strncmp(table[i], "pb", 3))
 			push(a, b);
-		else if (ft_strncmp(table[i], "ra", 3) == 0)
+		else if (!ft_strncmp(table[i], "ra", 3))
 			rotate_direction(a, 1);
-		else if (ft_strncmp(table[i], "rb", 3) == 0)
+		else if (!ft_strncmp(table[i], "rb", 3))
 			rotate_direction(b, 1);
-		else if (ft_strncmp(table[i], "rr", 3) == 0)
+		else if (!ft_strncmp(table[i], "rr", 3))
 		{
 			rotate_direction(a, 1);
 			rotate_direction(b, 1);
 		}
-		else if (ft_strncmp(table[i], "rra", 4) == 0)
+		else if (!ft_strncmp(table[i], "rra", 4))
 			rotate_direction(a, -1);
-		else if (ft_strncmp(table[i], "rrb", 4) == 0)
+		else if (!ft_strncmp(table[i], "rrb", 4))
 			rotate_direction(b, -1);
-		else if (ft_strncmp(table[i], "rrr", 4) == 0)
+		else if (!ft_strncmp(table[i], "rrr", 4))
 		{
 			rotate_direction(a, -1);
 			rotate_direction(b, -1);
@@ -78,34 +78,15 @@ void	process_instructions(char **table, t_stack_node **a, t_stack_node **b, int 
 
 int	main(int argc, char **argv)
 {
-	char	**table;
-	int		i;
-	int		error;
-	char	*error_msg;
-
-	// take care of args
+	char			**table;
+	int				i;
 	t_stack_node	*a;
 	t_stack_node	*b;
+
 	a = 0;
 	b = 0;
-	stack_init(&a, ++argv, --argc, &error);
+	stack_init(&a, ++argv, --argc);
 	// print_stack(a);
-
-	// take care of stdin
-	
-	error_msg = ft_get_next_line(STDOUT_FILENO);
-	while (error_msg)
-	{
-		printf("error_msg: %s\n", error_msg);
-		if (error_msg)
-		{
-			if (error && ft_strncmp(error_msg, "Error\n", 6) == 0)
-				ft_putstr_fd("OK\n", STDOUT_FILENO);
-			else
-				ft_putstr_fd("KO\n", STDOUT_FILENO);
-			return (0);
-		}
-	}
 	table = ft_calloc(100, sizeof(char *));
 	i = 0;
 	table[i] = ft_get_next_line(STDIN_FILENO);
@@ -115,9 +96,11 @@ int	main(int argc, char **argv)
 	while (table[i])
 		table[i++] = ft_strtrim(table[i], "\n");
 	i = 0;
+	// printf("instrucitons read in checker: %s\n", table[i++]);
 	// while (table[i])
 	// 	printf("%s\n", table[i++]);
-	process_instructions(table, &a, &b, error);
+	process_instructions(table, &a, &b);
 	// print_stack(a);
+	free_stack(&a);
 	return (0);
 }

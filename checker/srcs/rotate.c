@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 19:15:59 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/22 16:45:24 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 21:49:44 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,4 @@ void	rotate_direction(t_stack_node **stack, int direction)
 		last_node->prev->next = 0;
 		last_node->prev = 0;
 	}
-}
-
-void	rotate_stack(t_stack_node **stack, char *instruction)
-{
-	if (!stack || !*stack)
-		return ;
-	if (!ft_strncmp("ra", instruction, 3)
-		|| !ft_strncmp("rb", instruction, 3))
-		rotate_direction(stack, 1);
-	else if (!ft_strncmp("rra", instruction, 4)
-		|| !ft_strncmp("rrb", instruction, 4))
-		rotate_direction(stack, -1);
-	ft_putstr_fd(instruction, 1);
-	ft_putchar_fd('\n', 1);
-}
-
-void	rotate_stacks(t_stack_node **a, t_stack_node **b, char *instruction)
-{
-	if (!a || !*a || !b || !*b)
-		return ;
-	if (!ft_strncmp("rr", instruction, 3))
-	{
-		rotate_direction(a, 1);
-		rotate_direction(b, 1);
-	}
-	else if (!ft_strncmp("rrr", instruction, 4))
-	{
-		rotate_direction(a, -1);
-		rotate_direction(b, -1);
-	}
-	ft_putstr_fd(instruction, 1);
-	ft_putchar_fd('\n', 1);
 }
