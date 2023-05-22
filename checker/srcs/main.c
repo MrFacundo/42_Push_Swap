@@ -6,7 +6,7 @@
 /*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:48:33 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/22 17:40:23 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 18:03:43 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,6 @@ void	process_instructions(char **table, t_stack_node **a, t_stack_node **b, int 
 			rotate_direction(a, -1);
 			rotate_direction(b, -1);
 		}
-		else if (ft_strncmp(table[i], "Error", 6) == 0)
-		{
-			if (error)
-				ft_putstr_fd("OK\n", STDOUT_FILENO);
-			else
-				ft_putstr_fd("KO\n", STDOUT_FILENO);
-		}
 		i++;
 	}
 	if (stack_is_sorted(*a))
@@ -99,9 +92,20 @@ int	main(int argc, char **argv)
 	// print_stack(a);
 
 	// take care of stdin
-	error_msg = ft_get_next_line(STDERR_FILENO);
 	
-	
+	error_msg = ft_get_next_line(STDOUT_FILENO);
+	while (error_msg)
+	{
+		printf("error_msg: %s\n", error_msg);
+		if (error_msg)
+		{
+			if (error && ft_strncmp(error_msg, "Error\n", 6) == 0)
+				ft_putstr_fd("OK\n", STDOUT_FILENO);
+			else
+				ft_putstr_fd("KO\n", STDOUT_FILENO);
+			return (0);
+		}
+	}
 	table = ft_calloc(100, sizeof(char *));
 	i = 0;
 	table[i] = ft_get_next_line(STDIN_FILENO);
