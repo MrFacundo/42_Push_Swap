@@ -4,6 +4,7 @@
 		"*.js": "javascriptreact",
 		"libft.h": "c",
 		"push_swap.h": "c",
-		"checker.h": "c"
+		"checker.h": "c",
+		"limits.h": "c"
 	}
 }

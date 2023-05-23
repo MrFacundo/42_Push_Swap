@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:18:37 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/22 17:06:37 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:39:33 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,5 @@ int	main(int argc, char **argv)
 		sort(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
-	// print_stack(a);
 	return (0);
 }

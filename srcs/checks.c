@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:08:31 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/22 18:02:04 by facundo          ###   ########.fr       */
+/*   Updated: 2023/05/22 21:03:02 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	value_is_unique(t_stack_node *stack, int value)
 
 void	handle_error(t_stack_node **stack)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	free_stack(stack);
 	exit(1);
 }

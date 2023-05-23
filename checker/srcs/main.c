@@ -6,75 +6,12 @@
 /*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:48:33 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/22 22:10:14 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:26:14 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../../libft/libft.h"
-
-
-int	stack_is_sorted(t_stack_node *stack)
-{
-	t_stack_node	*node;
-
-	node = stack;
-	while (node->next)
-	{
-		if (node->value > node->next->value)
-			return (0);
-		node = node->next;
-	}
-	return (1);
-}
-
-void	process_instructions(char **table, t_stack_node **a, t_stack_node **b)
-{
-	int	i;
-
-	i = 0;
-	while (table[i])
-	{
-		if (!ft_strncmp(table[i], "sa", 3))
-			swap(a);
-		else if (!ft_strncmp(table[i], "sb", 3))
-			swap(b);
-		else if (!ft_strncmp(table[i], "ss", 3))
-		{
-			swap(a);
-			swap(b);
-		}
-		else if (!ft_strncmp(table[i], "pa", 3))
-			push(b, a);
-		else if (!ft_strncmp(table[i], "pb", 3))
-			push(a, b);
-		else if (!ft_strncmp(table[i], "ra", 3))
-			rotate_direction(a, 1);
-		else if (!ft_strncmp(table[i], "rb", 3))
-			rotate_direction(b, 1);
-		else if (!ft_strncmp(table[i], "rr", 3))
-		{
-			rotate_direction(a, 1);
-			rotate_direction(b, 1);
-		}
-		else if (!ft_strncmp(table[i], "rra", 4))
-			rotate_direction(a, -1);
-		else if (!ft_strncmp(table[i], "rrb", 4))
-			rotate_direction(b, -1);
-		else if (!ft_strncmp(table[i], "rrr", 4))
-		{
-			rotate_direction(a, -1);
-			rotate_direction(b, -1);
-		}
-		i++;
-	}
-	if (stack_is_sorted(*a))
-		ft_putstr_fd("OK\n", STDOUT_FILENO);
-	else
-		ft_putstr_fd("KO\n", STDOUT_FILENO);
-}
-
-
 
 int	main(int argc, char **argv)
 {
@@ -86,7 +23,6 @@ int	main(int argc, char **argv)
 	a = 0;
 	b = 0;
 	stack_init(&a, ++argv, --argc);
-	// print_stack(a);
 	table = ft_calloc(100, sizeof(char *));
 	i = 0;
 	table[i] = ft_get_next_line(STDIN_FILENO);
@@ -96,11 +32,7 @@ int	main(int argc, char **argv)
 	while (table[i])
 		table[i++] = ft_strtrim(table[i], "\n");
 	i = 0;
-	// printf("instrucitons read in checker: %s\n", table[i++]);
-	// while (table[i])
-	// 	printf("%s\n", table[i++]);
 	process_instructions(table, &a, &b);
-	// print_stack(a);
 	free_stack(&a);
 	return (0);
 }
