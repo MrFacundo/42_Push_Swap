@@ -45,12 +45,6 @@ show:
 		@printf "LFLAGS	: $(LFLAGS)\n"
 		@printf "SOURCES	: $(SOURCES)\n"
 
-valgrind: all
-		 valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all -s ./so_long maps/map_4.ber
-
-rs:		 all
-		./push_swap 3 2 1
-
 re: fclean all
 
 .PHONY: all libft clean fclean re show valgrind

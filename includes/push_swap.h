@@ -6,7 +6,7 @@
 /*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:17:42 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/23 20:37:58 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:47:19 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			rotate_one(t_stack_node **stack,
 
 /* push.c */
 void			push_direction(t_stack_node **a,
-					t_stack_node b,
+					t_stack_node **b,
 					char *instruction);
 
 /* rotate.c */
