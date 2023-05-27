@@ -6,7 +6,7 @@
 /*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:21:43 by ftroiter          #+#    #+#             */
-/*   Updated: 2023/05/23 20:26:12 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:13:51 by ftroiter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,46 +39,33 @@ void	swap_both(t_stack_node **a, t_stack_node **b)
 	swap(b);
 }
 
-void	process_instruction(char *instruction,
+int	process_instruction(char *instruction,
 							t_stack_node **a,
 								t_stack_node **b)
 {
-	if (!ft_strncmp(instruction, "sa", 3))
+	if (!ft_strncmp(instruction, "sa\n", 4))
 		swap(a);
-	else if (!ft_strncmp(instruction, "sb", 3))
+	else if (!ft_strncmp(instruction, "sb\n", 4))
 		swap(b);
-	else if (!ft_strncmp(instruction, "ss", 3))
+	else if (!ft_strncmp(instruction, "ss\n", 4))
 		swap_both(a, b);
-	else if (!ft_strncmp(instruction, "pa", 3))
+	else if (!ft_strncmp(instruction, "pa\n", 4))
 		push(b, a);
-	else if (!ft_strncmp(instruction, "pb", 3))
+	else if (!ft_strncmp(instruction, "pb\n", 4))
 		push(a, b);
-	else if (!ft_strncmp(instruction, "ra", 3))
+	else if (!ft_strncmp(instruction, "ra\n", 4))
 		rotate_direction(a, 1);
-	else if (!ft_strncmp(instruction, "rb", 3))
+	else if (!ft_strncmp(instruction, "rb\n", 4))
 		rotate_direction(b, 1);
-	else if (!ft_strncmp(instruction, "rr", 3))
+	else if (!ft_strncmp(instruction, "rr\n", 4))
 		rotate_both(a, b, 1);
-	else if (!ft_strncmp(instruction, "rra", 4))
+	else if (!ft_strncmp(instruction, "rra\n", 5))
 		rotate_direction(a, -1);
-	else if (!ft_strncmp(instruction, "rrb", 4))
+	else if (!ft_strncmp(instruction, "rrb\n", 5))
 		rotate_direction(b, -1);
-	else if (!ft_strncmp(instruction, "rrr", 4))
+	else if (!ft_strncmp(instruction, "rrr\n", 5))
 		rotate_both(a, b, -1);
-}
-
-void	process_instructions(char **table, t_stack_node **a, t_stack_node **b)
-{
-	int	i;
-
-	i = 0;
-	while (table[i])
-	{
-		process_instruction(table[i], a, b);
-		i++;
-	}
-	if (stack_is_sorted(*a))
-		ft_putstr_fd("OK\n", STDOUT_FILENO);
 	else
-		ft_putstr_fd("KO\n", STDOUT_FILENO);
+		return (1);
+	return (0);
 }
