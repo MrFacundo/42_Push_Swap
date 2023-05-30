@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftroiter <ftroiter@student.42.fr>          +#+  +:+       +#+        */
+/*   By: facundo <facundo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:08:31 by facundo           #+#    #+#             */
-/*   Updated: 2023/05/27 17:01:10 by ftroiter         ###   ########.fr       */
+/*   Updated: 2023/05/30 15:23:51 by facundo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 #include "../../libft/libft.h"
+
+void	handle_error(t_stack_node **stack)
+{
+	ft_putstr_fd("Args error\n", STDERR_FILENO);
+	free_stack(stack);
+	exit(1);
+}
 
 int	value_is_unique(t_stack_node *stack, int value)
 {
@@ -36,6 +43,7 @@ void	free_stack(t_stack_node **stack)
 		*stack = (*stack)->next;
 		free(tmp);
 	}
+	free(*stack);
 }
 
 int	is_int(char *str)

@@ -10,6 +10,7 @@ git rm -f path/to/submodule
 # Valgrind
 
 valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all -s <binary>
+ARG="4 67 3 87 23"; ../push_swap $ARG | valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all -s ./checker $ARG
 
 # Checker
 this one works only in bash
