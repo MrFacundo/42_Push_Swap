@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	b = 0;
 	stack_init(&a, ++argv, --argc);
 	process_instructions(&a, &b);
-	if (stack_is_sorted(a))
+	if (stack_is_sorted(a) && !stack_size(b))
 		ft_putstr_fd("OK\n", STDOUT_FILENO);
 	else
 		ft_putstr_fd("KO\n", STDOUT_FILENO);
